@@ -2,11 +2,18 @@
 @section('content')
     <div class="row">
         <div class="col-lg-12 margin-tb">
-            <div class="pull-left mt-2">
+            <div class="pull-left mt-3">
                 <h2>JURUSAN TEKNOLOGI INFORMASI-POLITEKNIK NEGERI MALANG</h2>
             </div>
-            <div class="float-right my-2">
-                <a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a>
+            <div class="float-right my-3">
+                <div class="row ">
+                    <div class="col-sm-auto"><a class="btn btn-success" href="{{ route('mahasiswa.create') }}"> Input Mahasiswa</a></div>
+                </div>    
+            </div>
+            <div>
+                <form class="input-group" action="{{ route('mahasiswa.index') }}" method="GET">
+                    <input type="text" class="form-control" name="search" placeholder="Search mahasiswa">
+                </form>
             </div>
         </div>
     </div>
@@ -21,16 +28,21 @@
         <tr>
             <th>Nim</th>
             <th>Nama</th>
+            <th>Tanggal lahir</th>
+            <th>Email</th>
             <th>Kelas</th>
             <th>Jurusan</th>
             <th>No_Handphone</th>
             <th width="280px">Action</th>
         </tr>
-        @foreach ($mahasiswas as $Mahasiswa)
+        @if (count($posts) > 0)
+        @foreach ($posts as $Mahasiswa)
         <tr>
  
             <td>{{ $Mahasiswa->nim }}</td>
             <td>{{ $Mahasiswa->nama }}</td>
+            <td>{{ $Mahasiswa->tanggal_lahir }}</td>
+            <td>{{ $Mahasiswa->email }}</td>
             <td>{{ $Mahasiswa->kelas }}</td>
             <td>{{ $Mahasiswa->jurusan }}</td>
             <td>{{ $Mahasiswa->no_handphone }}</td>
@@ -46,5 +58,12 @@
             </td>
         </tr>
         @endforeach
-    </table>
+@else
+    <h4 class="text-danger">*User Not Found</h4>   
+@endif
+
+</table>
+<div class="d-flex float-right">
+    {{$posts->links('pagination::bootstrap-4')}}
+</div>
 @endsection
