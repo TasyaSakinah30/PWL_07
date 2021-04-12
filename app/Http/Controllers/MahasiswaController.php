@@ -80,6 +80,11 @@ class MahasiswaController extends Controller
         // dd($mahasiswa);
    
     }
+    public function nilai($nim)
+    {
+        $mahasiswa = Mahasiswa::with('kelas', 'matakuliah')->where('nim', $nim)->first();
+        return view('mahasiswas.nilai', compact('mahasiswa'));
+    }
 
     /**
      * Display the specified resource.
