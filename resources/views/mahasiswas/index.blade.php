@@ -35,12 +35,13 @@
             <th>No_Handphone</th>
             <th width="280px">Action</th>
         </tr>
-        @if (count($posts) > 0)
-        @foreach ($posts as $Mahasiswa)
+    
+        @foreach ($paginate as $Mahasiswa)
         <tr>
  
             <td>{{ $Mahasiswa->nim }}</td>
             <td>{{ $Mahasiswa->nama }}</td>
+            <td>{{ $Mahasiswa->kelas->nama_kelas }}</td>
             <td>{{ $Mahasiswa->tanggal_lahir }}</td>
             <td>{{ $Mahasiswa->email }}</td>
             <td>{{ $Mahasiswa->kelas }}</td>
@@ -58,12 +59,10 @@
             </td>
         </tr>
         @endforeach
-@else
-    <h4 class="text-danger">*User Not Found</h4>   
-@endif
+
 
 </table>
 <div class="d-flex float-right">
-    {{$posts->links('pagination::bootstrap-4')}}
+    {{$paginate->links('pagination::bootstrap-4')}}
 </div>
 @endsection
