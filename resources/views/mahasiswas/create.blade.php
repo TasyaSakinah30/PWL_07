@@ -29,16 +29,8 @@
                     <input type="nama" name="nama" class="form-control" id="nama" aria-describedby="nama" > 
                 </div>
                 <div class="form-group">
-                    <label for="tanggal_lahir">Tanggal lahir</label> 
-                    <input type="tanggal_lahir" name="tanggal_lahir" class="form-control" id="tanggal_lahir" aria-describedby="tangga_lahir" > 
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label> 
-                    <input type="email" name="email" class="form-control" id="email" aria-describedby="email" > 
-                </div>
-                <div class="form-group">
                     <label for="kelas">Kelas</label>
-                    <select class="form-control">
+                    <select name="kelas" class="form-control">
                     @foreach($kelas as $kls)
                         <option value="{{$kls->id}}">{{$kls->nama_kelas}}</option>
                     @endforeach
