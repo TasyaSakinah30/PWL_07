@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\Mahasiswa as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Mahasiswa;
 
 
 class Mahasiswa extends Model
@@ -30,4 +31,8 @@ class Mahasiswa extends Model
         'no_handphone',
 
     ];
+    public function kelas()
+    {
+        return $this->belongsTo(kelas::class);
+    }
 };
